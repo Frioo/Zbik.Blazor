@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zbik.Blazor.JsonTree", "Zbik.Blazor.JsonTree\Zbik.Blazor.JsonTree.csproj", "{EEEBF23C-04ED-42EA-92F2-BDB668A725CC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zbik.Blazor.JsonTree.Example", "Zbik.Blazor.JsonTree.Example\Zbik.Blazor.JsonTree.Example.csproj", "{4288C3DA-D1B6-42C1-996C-253B74C77D23}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EEEBF23C-04ED-42EA-92F2-BDB668A725CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEEBF23C-04ED-42EA-92F2-BDB668A725CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEEBF23C-04ED-42EA-92F2-BDB668A725CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEEBF23C-04ED-42EA-92F2-BDB668A725CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4288C3DA-D1B6-42C1-996C-253B74C77D23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4288C3DA-D1B6-42C1-996C-253B74C77D23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4288C3DA-D1B6-42C1-996C-253B74C77D23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4288C3DA-D1B6-42C1-996C-253B74C77D23}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E171C99B-0CBB-43AB-94C7-41B0665E7B8D}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,17 @@
+﻿body {
+    background-color: var(--background-color);
+}
+
+.theme-default {
+    font-family: monospace;
+    --indent: 1rem;
+    --text-color: hsl(229, 16%, 50%); /* #6b7394 */
+    --key-color: hsl(207, 62%, 53%); /* #3d8fd1 */
+    --key-color: hsl(229, 57%, 54%); /* #6679cc */
+    --delimiter-color: hsl(229, 13%, 59%); /* #898ea4 */
+    --value-color: var(--text-color);
+    --value-color-number: hsl(247, 48%, 46%);
+    --value-color-boolean: var(--value-color-number);
+    --value-color-string: hsl(25, 66%, 47%); /* #c76b29 */
+    --value-color-null: hsl(229, 16%, 65%); /* #979db4 */
+}

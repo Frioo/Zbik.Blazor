@@ -1,0 +1,91 @@
+﻿@using System.Text.Json
+@using Zbik.Blazor.JsonTree.Models;
+
+<link rel="stylesheet" href="/_content/Zbik.Blazor.JsonTree/styles.css" />
+
+<ul>
+    <li>
+        <NodeKey Element="@Element" IsArrayChild="@IsArrayChild" ShowArrayIndices="@ShowArrayIndices" />
+
+        @if (Element.HasChildren)
+        {
+            <button class="btn-expand" @onclick="ToggleExpand">
+                @if (IsExpanded)
+                {
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                }
+                else
+                {
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                }
+            </button>
+
+
+            <span class="delimiter">@(@Element.IsArray ? "[" : "{")</span>
+            @if (IsExpanded)
+            {
+                <ul>
+                    @foreach (var c in Element.Children)
+                    {
+                        <Node
+                            Element="@c"
+                            IsExpanded="@IsExpanded"
+                            IsArrayChild="Element.IsArray"
+                            ShowArrayIndices="@ShowArrayIndices" />
+                    }
+                </ul>
+            }
+            else
+            {
+                <span>...</span>
+            }
+            <span class="delimiter">@(@Element.IsArray ? "]" : "}")</span>
+        }
+        else
+        {
+            @switch (Element.ValueKind)
+            {
+                case JsonValueKind.String:
+                {
+                    <span class="string">"@Element.Value"</span>
+                    break;
+                }
+                case JsonValueKind.Number:
+                {
+                    <span class="number">@Element.Value</span>
+                    break;
+                }
+                case JsonValueKind.True:
+                case JsonValueKind.False:
+                {
+                    <span class="boolean">@Element.Value.ToLower()</span>
+                    break;
+                }
+            }
+        } 
+    </li>
+</ul>
+
+@code {
+    [Parameter]
+    public Models.Node Element { get; set; }
+
+    [Parameter]
+    public bool IsArrayChild { get; set; }
+
+    [Parameter]
+    public bool ShowArrayIndices { get; set; }
+
+    [Parameter]
+    public bool IsExpanded { get; set; }
+
+    protected override void OnInitialized()
+    {
+        StateHasChanged();
+    }
+
+    private void ToggleExpand()
+    {
+        IsExpanded = !IsExpanded;
+    }
+}

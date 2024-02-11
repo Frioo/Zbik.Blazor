@@ -1,0 +1,77 @@
+﻿@using System.Text.Json
+@using Zbik.Blazor.JsonTree;
+@rendermode InteractiveServer
+@page "/"
+
+<PageTitle>Home</PageTitle>
+
+<div>
+    <h1>Json tree view for Blazor</h1>
+    <div>
+        <label for="expand">
+            Expand
+            <input id="expand" type="checkbox" @bind-value="@expand" />
+        </label>
+    </div>
+    <div>
+        <label for="show-array-indices">
+            Show array indices
+            <input id="show-array-indices" type="checkbox" @bind-value="@showArrayIndices" />
+        </label>
+    </div>
+    <div>
+        <label for="theme">
+            Theme
+            <select name="theme" @bind="@themeClass">
+                <option value="">None</option>
+                <option value="theme-default">Default</option>
+            </select>
+        </label>
+    </div>
+
+    <b>Data passed as JSON string</b>
+    <Tree
+        Json="@JsonSerializer.Serialize(data)"
+        Expand="@expand"
+        ShowArrayIndices="@showArrayIndices"
+        ThemeClass="@themeClass" />
+
+    <b>Data passed as object</b>
+    <Tree
+        Object="@data"
+        ShowArrayIndices="@showArrayIndices"
+        ThemeClass="@themeClass" />
+</div>
+
+@code
+{
+    bool expand { get; set; } = false;
+    bool showArrayIndices { get; set; } = false;
+    string themeClass { get; set; } = "theme-default";
+
+    object data = new
+    {
+        Foo = "Bar",
+        Arr = new string[]
+        {
+            "One", "Two", "Three"
+        },
+        Complex = new
+        {
+            Name = "zbik",
+            Hobbies = new string[]
+            {
+                "Programming", "Cycling", "Juggling"
+            },
+            Age = 23,
+            IsProductive = true,
+            UnexpectedDimensions = new string[][]
+            {
+                new string[] { "One", "Two", "Three" },
+                new string[] { "Four", "Five", "Six" },
+                new string[] { "Seven", "Eight", "Nine" },
+            },
+        },
+    };
+
+}

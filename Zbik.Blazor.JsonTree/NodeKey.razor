@@ -1,0 +1,28 @@
+﻿@if (Element.Layer > 0)
+{
+    @if (!IsArrayChild)
+    {
+        <p class="node-name">
+            <span class="key">"@Element.Name"</span>
+            <span class="delimiter">: </span>
+        </p>
+    }
+    else if (IsArrayChild && ShowArrayIndices)
+    {
+        <p class="node-name">
+            <span class="key">@Element.Name</span>
+            <span class="delimiter">: </span>
+        </p>
+    }
+}
+
+@code {
+    [Parameter]
+    public bool IsArrayChild { get; set; }
+
+    [Parameter]
+    public bool ShowArrayIndices { get; set; }
+
+    [Parameter]
+    public Models.Node Element { get; set; }
+}

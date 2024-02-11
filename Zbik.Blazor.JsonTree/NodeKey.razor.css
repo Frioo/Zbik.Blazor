@@ -1,0 +1,9 @@
+﻿.node-name {
+    display: inline-flex;
+    padding-right: 0.5rem;
+    margin: 0;
+}
+
+.key {
+    color: var(--key-color);
+}

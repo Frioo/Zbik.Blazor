@@ -1,0 +1,58 @@
+﻿@using System.Text.Json
+
+<div class="tree @ThemeClass">
+    <Node Element="@node" ShowArrayIndices="@ShowArrayIndices" IsExpanded="@Expand" />
+</div>
+
+@code {
+    /* Data options */
+    [Parameter]
+    public JsonDocument? Document { get; set; }
+
+    [Parameter]
+    public string? Json { get; set; }
+
+    [Parameter]
+    public object? Object { get; set; }
+
+    /* Display options */
+    [Parameter]
+    public bool Expand { get; set; }
+
+    [Parameter]
+    public bool ShowArrayIndices { get; set; }
+
+    [Parameter]
+    public string ThemeClass { get; set; } = "theme-default";
+
+    private Models.Node node { get; set; }
+
+    protected override void OnInitialized()
+    {
+        JsonElement root;
+
+        if (Document != null)
+        {
+            root = Document.RootElement;
+        }
+        else if (!string.IsNullOrWhiteSpace(Json))
+        {
+            var doc = JsonDocument.Parse(Json);
+            root = doc.RootElement;
+        }
+        else if (Object != null)
+        {
+            var json = JsonSerializer.Serialize(Object);
+            var doc = JsonDocument.Parse(json);
+            root = doc.RootElement;
+        }
+        else
+        {
+            throw new Exception("One of the available parameters is required: Json, Object, Document");
+        }
+
+        node = new Models.Node(root, null);
+    }
+
+
+}
